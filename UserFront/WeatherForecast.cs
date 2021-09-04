@@ -1,6 +1,6 @@
 using System;
 
-namespace FrontAPI
+namespace UserFront
 {
     public class WeatherForecast
     {

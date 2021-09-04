@@ -1,0 +1,38 @@
+<form>
+  <label class="file-dropzone">
+    <p>Перетащите файл в эту область, или кликните для выбора.</p>
+    <input type="file" (change)="takeFile($event)" />
+  </label>
+</form>
+
+<section class="page-section">
+  <h4>Ранее отправленные</h4>
+  <mat-list class="uploaded-files">
+    <ng-container *ngFor="let file of files.slice().reverse() let i = index;" class="uploaded-files__item">
+      <mat-list-item >
+        <mat-icon aria-hidden="false" mat-list-icon>file_present</mat-icon>
+        <div mat-line>
+          <span class="file-title">{{file.title}}</span>
+        </div>
+
+        <div class="file-nomenclature" mat-line *ngIf="file.status == 'done'">{{file.nomenclature}}</div>
+        <div class="file-nomenclature" mat-line *ngIf="file.status == 'pending_uploading'">Не загружен</div>
+        <div class="file-nomenclature" mat-line *ngIf="file.status == 'uploading'">Загрузка</div>
+        <div class="file-nomenclature" mat-line *ngIf="file.status == 'recognition'">Распознавание</div>
+        <div class="file-nomenclature" mat-line *ngIf="file.status == 'error'">Произошла ошибка</div>
+        <div class="file-nomenclature" mat-line *ngIf="file.status == 'unrecognized'">Не удалось распознать</div>
+
+
+        <button mat-icon-button color="primary" *ngIf="file.status == 'pending_uploading'">
+          <mat-icon>upload</mat-icon>
+        </button>
+        <button mat-icon-button color="accent" *ngIf="file.status == 'error'">
+          <mat-icon>replay</mat-icon>
+        </button>
+      </mat-list-item>
+
+      <mat-divider *ngIf="!file.inProgress"></mat-divider>
+      <mat-progress-bar mode="indeterminate" *ngIf="file.inProgress"></mat-progress-bar>
+    </ng-container>
+  </mat-list>
+</section>

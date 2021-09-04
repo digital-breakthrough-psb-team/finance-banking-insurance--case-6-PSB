@@ -10,6 +10,10 @@ import { HomeComponent } from './home/home.component';
 import { CounterComponent } from './counter/counter.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { DoRecognitionFormComponent } from './do-recognition-form/do-recognition-form.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { MatSliderModule, MatListModule, MatIconModule, MatDividerModule,
+        MatProgressBarModule, MatButtonModule } from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -29,7 +33,14 @@ import { DoRecognitionFormComponent } from './do-recognition-form/do-recognition
       // { path: 'counter', component: CounterComponent },
       // { path: 'fetch-data', component: FetchDataComponent },
       // { path: 'super-fetch-data', component: FetchDataComponent },
-    ])
+    ]),
+    BrowserAnimationsModule,
+    MatSliderModule,
+    MatListModule,
+    MatIconModule,
+    MatDividerModule,
+    MatProgressBarModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
